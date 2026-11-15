@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
+  <title>Maatram | Volunteer Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div><strong>Maatram</strong><span>Volunteer Portal</span></div>
+      </div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">▦</span> Dashboard</button>
+        <button class="nav-item" data-page="opportunities"><span class="nav-icon">✦</span> Opportunities</button>
+        <button class="nav-item" data-page="assignments"><span class="nav-icon">▣</span> My Assignments <span class="nav-count" id="assignmentNavCount">3</span></button>
+        <button class="nav-item" data-page="history"><span class="nav-icon">◷</span> Volunteer History</button>
+        <button class="nav-item" data-page="leaderboard"><span class="nav-icon">♜</span> Leaderboard</button>
+      </nav>
+      <div class="workspace-label admin-label">ADMIN TOOLS</div>
+      <nav class="nav">
+        <button class="nav-item" data-page="admin"><span class="nav-icon">⚙</span> Admin Console</button>
+        <button class="nav-item" data-page="reports"><span class="nav-icon">▤</span> Reports & Analytics</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><div class="help-icon">✧</div><strong>Make an impact</strong><p>Every hour you give creates a brighter future.</p></div>
+        <div class="user-mini"><div class="avatar">AS</div><div><strong>Arun Student</strong><span>Student Volunteer</span></div><button class="dots" aria-label="Profile menu">•••</button></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="pageCrumb">Dashboard</strong></div>
+        <div class="top-actions">
+          <span class="role-pill"><span class="status-dot"></span><select id="roleSwitch" aria-label="Switch role"><option value="student">Student view</option><option value="admin">Admin view</option></select></span>
+          <button class="icon-button" title="Notifications">♧<i></i></button>
+          <div class="avatar top-avatar">AS</div>
+        </div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="page-heading">
+          <div><div class="eyebrow">SUNDAY, NOVEMBER 15, 2026</div><h1>Good morning, Arun <span>✦</span></h1><p>Here’s your volunteering impact at a glance.</p></div>
+          <button class="primary-btn" data-goto="opportunities">＋ Explore opportunities</button>
+        </div>
+        <div class="hero-card">
+          <div class="hero-content"><div class="hero-tag">YOUR IMPACT MATTERS</div><h2>Small actions.<br><em>Big change.</em></h2><p>Thank you for showing up for the Maatram community. Keep building your impact, one activity at a time.</p><button class="light-btn" data-goto="history">View my journey <span>→</span></button></div>
+          <div class="hero-art"><div class="sun"></div><div class="art-circle c1"></div><div class="art-circle c2"></div><div class="art-person">✦</div><div class="art-leaf">❧</div></div>
+        </div>
+        <div class="section-head"><div><h2>Your contribution</h2><p>Verified work across all academic years</p></div><span class="live-label"><span class="status-dot"></span> Auto-updated</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon blue">▣</span><span class="stat-label">Completed works</span></div><div class="stat-value" id="totalCompleted">26</div><div class="stat-foot"><span class="trend">↑</span> All approved activities</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon green">◷</span><span class="stat-label">Volunteer hours</span></div><div class="stat-value" id="totalHours">48<span class="unit"> hrs</span></div><div class="stat-foot">Time dedicated to community</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon purple">✧</span><span class="stat-label">Impact points</span></div><div class="stat-value" id="totalPoints">260</div><div class="stat-foot">Earned through verified work</div></article>
+          <article class="stat-card"><div class="stat-top"><span class="stat-icon amber">♜</span><span class="stat-label">Leaderboard rank</span></div><div class="stat-value">#12</div><div class="stat-foot"><span class="trend">Keep going</span> to climb higher</div></article>
+        </div>
+        <div class="content-grid">
+          <div class="panel year-panel"><div class="panel-head"><div><h3>Year-wise volunteering</h3><p>Activity counts by academic year</p></div><span class="chip">Verified</span></div><div id="yearSummary"></div><div class="overall-total"><div><span>Overall completed work</span><small>Across all academic years & activities</small></div><strong id="overallCount">26</strong></div></div>
+          <div class="panel upcoming-panel"><div class="panel-head"><div><h3>Upcoming assignments</h3><p>Stay on top of your schedule</p></div><button class="text-btn" data-goto="assignments">View all →</button></div><div id="upcomingList"></div></div>
+        </div>
+        <div class="panel activity-panel"><div class="panel-head"><div><h3>Recent activity</h3><p>Your latest volunteering updates</p></div><button class="text-btn" data-goto="history">Full history →</button></div><div id="recentList"></div></div>
+      </section>
+
+      <section class="page" id="page-opportunities">
+        <div class="page-heading"><div><div class="eyebrow">MAKE A DIFFERENCE</div><h1>Opportunities</h1><p>Explore volunteering activities and share your availability.</p></div></div>
+        <div class="filter-row"><div class="search-box">⌕ <input id="opportunitySearch" placeholder="Search activities..."></div><select id="categoryFilter"><option value="all">All activities</option><option>Physical Verification</option><option>Tele Verification</option><option>Karpom Karpippom</option><option>Online Tutor</option><option>Tree Plantation</option><option>Extra Activities</option></select></div>
+        <div class="opportunity-grid" id="opportunityGrid"></div>
+      </section>
+
+      <section class="page" id="page-assignments">
+        <div class="page-heading"><div><div class="eyebrow">YOUR TASKS</div><h1>My assignments</h1><p>Review instructions, confirm you've viewed them, and submit your work before the deadline.</p></div></div>
+        <div class="filter-row"><select id="assignmentFilter"><option value="all">All statuses</option><option>Assigned</option><option>Viewed</option><option>In Progress</option><option>Completed</option><option>Expired</option></select></div>
+        <div class="assignment-list" id="assignmentList"></div>
+      </section>
+
+      <section class="page" id="page-history">
+        <div class="page-heading"><div><div class="eyebrow">YOUR JOURNEY</div><h1>Volunteer history</h1><p>A complete record of your approved contribution, year by year.</p></div><button class="primary-btn" id="addExtraBtn">＋ Add extra activity</button></div>
+        <div class="panel history-panel"><div class="panel-head"><div><h3>Academic year breakdown</h3><p>Approved completions only · counts update automatically</p></div></div><div id="historyYearList"></div><div class="overall-total history-total"><div><span>Overall completed work</span><small>Combined total from every academic year</small></div><strong id="historyOverall">26</strong></div></div>
+        <div class="panel activity-panel"><div class="panel-head"><div><h3>Activity timeline</h3><p>All approved activities with date, college and academic year</p></div></div><div id="historyTimeline"></div></div>
+      </section>
+
+      <section class="page" id="page-leaderboard">
+        <div class="page-heading"><div><div class="eyebrow">COMMUNITY RECOGNITION</div><h1>Leaderboard</h1><p>Celebrating volunteers making a difference.</p></div></div>
+        <div class="panel leaderboard-panel"><div class="panel-head"><div><h3>Top volunteers</h3><p>Based on admin-approved work and impact points</p></div><span class="chip">This semester</span></div><div id="leaderboardList"></div></div>
+      </section>
+
+      <section class="page" id="page-admin">
+        <div class="page-heading"><div><div class="eyebrow">ADMINISTRATOR</div><h1>Admin console</h1><p>Create activities, assign volunteers, manage deadlines and review submissions.</p></div><button class="primary-btn" id="createTaskBtn">＋ Create task</button></div>
+        <div class="stats-grid admin-stats"><article class="stat-card"><div class="stat-top"><span class="stat-icon blue">♙</span><span class="stat-label">Total volunteers</span></div><div class="stat-value">1,248</div><div class="stat-foot">Registered community</div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon green">▣</span><span class="stat-label">Active assignments</span></div><div class="stat-value" id="adminActive">3</div><div class="stat-foot">Currently assigned</div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon amber">◷</span><span class="stat-label">Pending approvals</span></div><div class="stat-value" id="pendingApprovals">2</div><div class="stat-foot">Reports to review</div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon purple">↻</span><span class="stat-label">Expired tasks</span></div><div class="stat-value" id="expiredCount">1</div><div class="stat-foot">Can be reopened by admin</div></article></div>
+        <div class="panel"><div class="panel-head"><div><h3>Task management</h3><p>All activities, assignments and deadlines</p></div><div class="search-box">⌕ <input id="adminSearch" placeholder="Search tasks..."></div></div><div id="adminTaskTable" class="table-wrap"></div></div>
+        <div class="panel review-panel"><div class="panel-head"><div><h3>Submission review</h3><p>Review student reports and approve completed work</p></div></div><div id="reviewList"></div></div>
+      </section>
+
+      <section class="page" id="page-reports">
+        <div class="page-heading"><div><div class="eyebrow">INSIGHTS & ANALYTICS</div><h1>Reports & analytics</h1><p>Contribution overview across volunteer activities.</p></div><button class="secondary-btn" id="exportBtn">↓ Export CSV</button></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span class="stat-icon blue">▣</span><span class="stat-label">Completed works</span></div><div class="stat-value" id="reportTotal">26</div><div class="stat-foot">Verified contributions</div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon green">◷</span><span class="stat-label">Total hours</span></div><div class="stat-value">48<span class="unit"> hrs</span></div><div class="stat-foot">Community service</div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon purple">♙</span><span class="stat-label">Student volunteers</span></div><div class="stat-value">1,248</div><div class="stat-foot">Across districts</div></article><article class="stat-card"><div class="stat-top"><span class="stat-icon amber">✧</span><span class="stat-label">Activities</span></div><div class="stat-value">6</div><div class="stat-foot">Main categories</div></article></div>
+        <div class="content-grid"><div class="panel"><div class="panel-head"><div><h3>Activity-wise totals</h3><p>Overall approved completed work</p></div></div><div id="activityReport"></div></div><div class="panel"><div class="panel-head"><div><h3>Academic year totals</h3><p>Student contribution distribution</p></div></div><div id="yearReport"></div></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true"><div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">DETAILS</div><h2 id="modalTitle">Modal title</h2></div><button class="close-btn" id="modalClose">×</button></div><div id="modalBody"></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
